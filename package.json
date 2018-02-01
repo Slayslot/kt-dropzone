@@ -1,11 +1,11 @@
 {
-  "name": "react-dropzone-folder",
+  "name": "kt-dropzone",
   "description": "Simple HTML5 drag-drop zone with React.js",
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "npm run clean && webpack",
-    "prepublish": "NODE_ENV=production npm run build && jest",
+    "prepublish": "NODE_ENV=production npm run build",
     "start": "styleguidist server",
     "styleguide": "styleguidist build",
     "test": "npm run eslint:src && jest --coverage",
@@ -104,5 +104,5 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "version": "0.0.0-development"
+  "version": "0.0.5"
 }

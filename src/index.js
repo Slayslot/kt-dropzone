@@ -33,6 +33,7 @@ class Dropzone extends React.Component {
     this.onDrop = this.onDrop.bind(this)
     this.onFileDialogCancel = this.onFileDialogCancel.bind(this)
     this.setRef = this.setRef.bind(this)
+    this.addDirectory = this.addDirectory.bind(this)
     this.isFileDialogActive = false
     this.state = {
       draggedFiles: [],
@@ -222,6 +223,12 @@ class Dropzone extends React.Component {
     this.node = ref
   }
 
+  addDirectory(input) {
+    this.fileInputEl = input
+    this.fileInputEl.directory = true
+    this.fileInputEl.webkitdirectory = true
+  }
+
   fileMatchSize(file) {
     return file.size <= this.props.maxSize && file.size >= this.props.minSize
   }
@@ -326,7 +333,7 @@ class Dropzone extends React.Component {
       type: 'file',
       style: { display: 'none' },
       multiple: supportMultiple && multiple,
-      ref: el => this.fileInputEl = el, // eslint-disable-line
+      ref: el => this.addDirectory(el), // eslint-disable-line
       onChange: this.onDrop
     }
 
