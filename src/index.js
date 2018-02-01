@@ -51,8 +51,6 @@ class Dropzone extends React.Component {
     }
     // Tried implementing addEventListener, but didn't work out
     document.body.onfocus = this.onFileDialogCancel
-    this.fileInputEl.directory = true
-    this.fileInputEl.webkitdirectory = true
   }
 
   componentWillUnmount() {

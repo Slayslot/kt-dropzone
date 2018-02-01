@@ -134,7 +134,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _this.onDrop = _this.onDrop.bind(_this);
 	    _this.onFileDialogCancel = _this.onFileDialogCancel.bind(_this);
 	    _this.setRef = _this.setRef.bind(_this);
-	    _this.addDirectory = _this.addDirectory.bind(_this);
 	    _this.isFileDialogActive = false;
 	    _this.state = {
 	      draggedFiles: [],
@@ -356,13 +355,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.node = ref;
 	    }
 	  }, {
-	    key: 'addDirectory',
-	    value: function addDirectory(input) {
-	      this.fileInputEl = input;
-	      this.fileInputEl.directory = true;
-	      this.fileInputEl.webkitdirectory = true;
-	    }
-	  }, {
 	    key: 'fileMatchSize',
 	    value: function fileMatchSize(file) {
 	      return file.size <= this.props.maxSize && file.size >= this.props.minSize;
@@ -463,7 +455,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        style: { display: 'none' },
 	        multiple: supportMultiple && multiple,
 	        ref: function ref(el) {
-	          return _this5.addDirectory(el);
+	          return _this5.fileInputEl = el;
 	        }, // eslint-disable-line
 	        onChange: this.onDrop
 	      };
