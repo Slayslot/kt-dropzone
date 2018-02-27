@@ -138,7 +138,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _this.state = {
 	      draggedFiles: [],
 	      acceptedFiles: [],
-	      rejectedFiles: []
+	      rejectedFiles: [],
+	      loading: false
 	    };
 	    return _this;
 	  }
@@ -246,6 +247,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function onDrop(evt) {
 	      var _this3 = this;
 	
+	      this.setState({ loading: true });
 	      var _props = this.props,
 	          onDrop = _props.onDrop,
 	          onDropAccepted = _props.onDropAccepted,
@@ -291,6 +293,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	
 	        if (onDrop) {
+	          _this3.setState({ loading: false });
 	          onDrop.call(_this3, acceptedFiles, rejectedFiles, evt);
 	        }
 	
@@ -417,6 +420,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      if (isDragReject && rejectClassName) {
 	        className += ' ' + rejectClassName;
+	      }
+	
+	      if (this.state.loading) {
+	        className += ' loading';
 	      }
 	
 	      if (!className && !style && !activeStyle && !rejectStyle) {
