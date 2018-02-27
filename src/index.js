@@ -37,7 +37,8 @@ class Dropzone extends React.Component {
     this.state = {
       draggedFiles: [],
       acceptedFiles: [],
-      rejectedFiles: []
+      rejectedFiles: [],
+      loading: false
     }
   }
 
@@ -127,6 +128,7 @@ class Dropzone extends React.Component {
   }
 
   onDrop(evt) {
+    this.setState({ loading: true })
     const { onDrop, onDropAccepted, onDropRejected, multiple, disablePreview, accept } = this.props
 
     const acceptedFiles = []
@@ -165,6 +167,7 @@ class Dropzone extends React.Component {
       }
 
       if (onDrop) {
+        this.setState({ loading: false })
         onDrop.call(this, acceptedFiles, rejectedFiles, evt)
       }
 
@@ -281,6 +284,10 @@ class Dropzone extends React.Component {
     }
     if (isDragReject && rejectClassName) {
       className += ' ' + rejectClassName
+    }
+
+    if (this.state.loading) {
+      className += ' loading'
     }
 
     if (!className && !style && !activeStyle && !rejectStyle) {
